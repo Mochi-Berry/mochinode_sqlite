@@ -143,9 +143,16 @@ static int sq_load(void)
 
 static int js_to_ptr(MBJSContext *ctx, MBJSValueConst v, void **out)
 {
-    double d = 0;
     if (!rt.ready)
         return -1;
+    if (rt.ToBigInt64) {
+        int64_t i64 = 0;
+        if (rt.ToBigInt64(ctx, &i64, v) == 0 && i64 != 0) {
+            *out = (void *)(uintptr_t)i64;
+            return 0;
+        }
+    }
+    double d = 0;
     if (rt.ToFloat64(ctx, &d, v) < 0 || d <= 0)
         return -1;
     *out = (void *)(uintptr_t)d;
@@ -154,6 +161,8 @@ static int js_to_ptr(MBJSContext *ctx, MBJSValueConst v, void **out)
 
 static MBJSValue ptr_to_js(MBJSContext *ctx, void *p)
 {
+    if (rt.NewBigInt64)
+        return rt.NewBigInt64(ctx, (int64_t)(uintptr_t)p);
     return MBJS_NewFloat64(ctx, (double)(uintptr_t)p);
 }
 
