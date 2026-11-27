@@ -1,0 +1,12 @@
+{
+  "name": "mochinode_sqlite",
+  "version": "0.1.0",
+  "description": "SQLite bridge (libsqlite3/sqlite3.dll). NOTE: no statement-bind export \u2014 placeholders unbound",
+  "main": "./node_modules/src/index.js",
+  "exports": {
+    ".": "./node_modules/src/index.js",
+    "./manifest": "./manifest.json"
+  },
+  "license": "MIT",
+  "private": false
+}

@@ -1,0 +1,37 @@
+{
+  "name": "mochinode_sqlite",
+  "version": "0.1.0",
+  "layer": "package",
+  "description": "SQLite bridge (libsqlite3/sqlite3.dll). NOTE: no statement-bind export \u2014 placeholders unbound",
+  "status": "operational",
+  "entry": "./node_modules/src/index.js",
+  "layers": {
+    "js": "./node_modules/manifest.json",
+    "native": "./mochi_modules/manifest.json"
+  },
+  "abi_version": "MBC1",
+  "native_entry": "mbjs_init_module",
+  "runtime_exports": [
+    "close",
+    "columnBlobHex",
+    "columnCount",
+    "columnDouble",
+    "columnInt",
+    "columnName",
+    "columnText",
+    "columnType",
+    "errmsg",
+    "exec",
+    "finalize",
+    "open",
+    "prepare",
+    "step",
+    "version"
+  ],
+  "build": {
+    "engine_include": "$ENGINE_INC",
+    "lib_dir": "./mochi_modules/lib",
+    "output": "./mochi_modules/lib/mochinode_sqlite_x86_64.dll",
+    "link_libs": []
+  }
+}

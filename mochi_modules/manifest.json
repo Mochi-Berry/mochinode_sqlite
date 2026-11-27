@@ -1,0 +1,35 @@
+{
+  "layer": "native_core",
+  "name": "mochinode_sqlite",
+  "version": "0.1.0",
+  "abi_version": "MBC1",
+  "entry_point": "mbjs_init_module",
+  "status": "operational",
+  "targets": {
+    "x86_64-windows": "./lib/mochinode_sqlite_x86_64.dll"
+  },
+  "exports": [
+    "close",
+    "columnBlobHex",
+    "columnCount",
+    "columnDouble",
+    "columnInt",
+    "columnName",
+    "columnText",
+    "columnType",
+    "errmsg",
+    "exec",
+    "finalize",
+    "open",
+    "prepare",
+    "step",
+    "version"
+  ],
+  "sources": [
+    "src/mochinode_sqlite.c"
+  ],
+  "headers": [
+    "include/mochinode_sqlite.h",
+    "include/mochinode_sqlite_abi.h"
+  ]
+}
